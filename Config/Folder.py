@@ -1,7 +1,6 @@
 import os
 from Config.Singleton import Singleton
 
-
 class Folder(Singleton):
     def __init__(self) -> None:
         if not self.created:
