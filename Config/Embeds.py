@@ -196,6 +196,23 @@ class VEmbeds:
         )
         return embed
 
+    def LYRICS(self) -> Embed:
+        embed = Embed(
+            title=self.__messages.LYRICS_TITLE,
+            description=self.__messages.LYRICS_MESSAGE,
+            colour=self.__colors.BLACK
+        )
+        return embed
+    
+    def LYRICS_SELECTED(self, selectedLyric:str) -> Embed:
+        #The plan here is to include the actual content of the lyric in the selectedLyric argument, Also, it would be cool if the embed could be scrollable. Otherwise maybe a view would be more appropriate
+        embed = Embed(
+            title=self.__messages.LYRICS_SELECTED_TITLE,
+            description=f"The {selectedLyric} source was selected",
+            colour=self.__colors.BLACK
+        )
+        return embed
+
     def MY_ERROR_BAD_COMMAND(self) -> Embed:
         embed = Embed(
             title=self.__messages.BAD_COMMAND_TITLE,

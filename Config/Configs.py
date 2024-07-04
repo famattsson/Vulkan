@@ -46,6 +46,7 @@ class VConfigs(Singleton):
             self.CLEANER_MESSAGES_QUANT = int(os.getenv('CLEANER_MESSAGES_QUANT', 5))
             self.ACQUIRE_LOCK_TIMEOUT = int(os.getenv('ACQUIRE_LOCK_TIMEOUT', 10))
             self.QUEUE_VIEW_TIMEOUT = int(os.getenv('QUEUE_VIEW_TIMEOUT', 120))
+            self.LYRICS_VIEW_TIMEOUT = int(os.getenv('QUEUE_VIEW_TIMEOUT', 120))
 
             self.COMMANDS_FOLDER_NAME = os.getenv('COMMANDS_FOLDER_NAME', 'DiscordCogs')
             self.COMMANDS_PATH = f'{Folder().rootFolder}{self.COMMANDS_FOLDER_NAME}'

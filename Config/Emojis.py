@@ -14,6 +14,7 @@ class VEmojis(Singleton):
             self.LOOP_ALL = "🔁"
             self.SHUFFLE = "🔀"
             self.QUEUE = "📜"
+            self.LYRICS = "📝"
             self.MUSIC = "🎧"
             self.ERROR = "❌"
             self.DOWNLOADING = "📥"

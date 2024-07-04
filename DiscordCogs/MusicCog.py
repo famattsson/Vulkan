@@ -3,6 +3,7 @@ from Config.Exceptions import InvalidInput
 from Config.Helper import Helper
 from Handlers.ClearHandler import ClearHandler
 from Handlers.HandlerResponse import HandlerResponse
+from Handlers.LyricsHandler import LyricsHandler
 from Handlers.MoveHandler import MoveHandler
 from Handlers.NowPlayingHandler import NowPlayingHandler
 from Handlers.PlayHandler import PlayHandler
@@ -278,6 +279,19 @@ class MusicCog(Cog):
             cogResponser2 = EmoteCommandResponse(response, MessagesCategory.PLAYER)
             await cogResponser1.run()
             await cogResponser2.run()
+        except Exception as e:
+            print(f'[ERROR IN COG] -> {e}')
+
+    @command(name="lyrics", aliases =["ly"])
+    async def lyrics(self, ctx: Context) -> None: 
+        try:
+            controller = LyricsHandler(ctx, self.__bot)
+            response = await controller.run()
+            cogResponser1 = EmbedCommandResponse(response, MessagesCategory.OTHERS)
+            cogResponser2 = EmoteCommandResponse(response, MessagesCategory.OTHERS)
+            await cogResponser1.run()
+            await cogResponser2.run()
+
         except Exception as e:
             print(f'[ERROR IN COG] -> {e}')
 

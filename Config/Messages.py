@@ -60,6 +60,7 @@ class Messages(Singleton):
             self.ERROR_VOLUME_NUMBER = f'{self.__emojis.ERROR} This command require a number between 0 and 100'
             self.ERROR_PLAYING = f'{self.__emojis.ERROR} Error while playing songs'
             self.COMMAND_NOT_FOUND = f'{self.__emojis.ERROR} Command not found, type {configs.BOT_PREFIX}help to see all commands'
+            self.LYRICS_MESSAGE = f'{self.__emojis.LYRICS} Please select a lyric source from the dropdown (This is a test command and currently does nothing)' 
             self.UNKNOWN_ERROR = f'{self.__emojis.ERROR} Unknown Error, if needed, use {configs.BOT_PREFIX}reset to reset the player of your server'
             self.ERROR_MISSING_ARGUMENTS = f'{self.__emojis.ERROR} Missing arguments in this command. Type {configs.BOT_PREFIX}help "command" to see more info about this command'
             self.NOT_PREVIOUS = f'{self.__emojis.ERROR} There is none previous song to play'
@@ -67,6 +68,8 @@ class Messages(Singleton):
             self.IMPOSSIBLE_MOVE = 'That is impossible :('
             self.ERROR_TITLE = 'Error :-('
             self.COMMAND_NOT_FOUND_TITLE = 'This is strange :-('
+            self.LYRICS_TITLE = "Lyrics"
+            self.LYRICS_SELECTED_TITLE = "Lyric selected"
             self.NO_CHANNEL = 'To play some music, connect to any voice channel first.'
             self.NO_GUILD = f'This server does not has a Player, try {configs.BOT_PREFIX}reset'
             self.INVALID_INPUT = f'This URL was too strange, try something better or type {configs.BOT_PREFIX}help play'
