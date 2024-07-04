@@ -1,6 +1,5 @@
 from Config.Messages import Messages
 
-
 class VulkanError(Exception):
     def __init__(self, message='', title='', *args: object) -> None:
         self.__message = message
