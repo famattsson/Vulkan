@@ -1,4 +1,5 @@
 from discord.ext.commands import Context
+from Config.Exceptions import BadCommandUsage
 from Handlers.AbstractHandler import AbstractHandler
 from Handlers.HandlerResponse import HandlerResponse
 from Music.VulkanBot import VulkanBot
@@ -13,6 +14,12 @@ class SkipHandler(AbstractHandler):
         super().__init__(ctx, bot)
 
     async def run(self) -> HandlerResponse:
+        match self.verifyThatUserIsInVoiceChannel() :
+            case response if type(response) == HandlerResponse:
+                return response
+            case response if type(response) == None:
+                print("user was in same channel") 
+
         playersManager: AbstractPlayersManager = self.config.getPlayersManager()
         if playersManager.verifyIfPlayerExists(self.guild):
             command = VCommands(VCommandsType.SKIP, None)

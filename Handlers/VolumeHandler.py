@@ -14,6 +14,12 @@ class VolumeHandler(AbstractHandler):
         super().__init__(ctx, bot)
 
     async def run(self, args: str) -> HandlerResponse:
+        match self.verifyThatUserIsInVoiceChannel() :
+            case response if type(response) == HandlerResponse:
+                return response
+            case response if type(response) == None:
+                print("user was in same channel") 
+                
         if args is None or args.strip() == '':
             error = BadCommandUsage()
             return HandlerResponse(self.ctx, embed, error)

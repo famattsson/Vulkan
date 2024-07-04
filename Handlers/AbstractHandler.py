@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import List, Union
 from discord.ext.commands import Context
+from Music.VulkanBot import Context as VulkanContext
 from discord import Client, Guild, ClientUser, Interaction, Member, User
+from Config.Exceptions import BadCommandUsage
 from Config.Messages import Messages
 from Music.VulkanBot import VulkanBot
 from Handlers.HandlerResponse import HandlerResponse
@@ -80,3 +82,24 @@ class AbstractHandler(ABC):
         for member in guild_members:
             if member.id == self.__id:
                 return member
+            
+    def verifyThatUserIsInVoiceChannel(self) -> HandlerResponse | None:
+         
+        if not self.bot_member.voice:
+            embed = self.embeds.BOT_NOT_IN_VOICE()
+            error = BadCommandUsage("The bot needs to be in the voice channel to do loop messages")
+            return HandlerResponse(self.ctx, embed, error)
+
+        if type(self.ctx) == Interaction:
+            if not self.ctx.user.voice or self.ctx.user.voice.channel.id != self.bot_member.voice.channel.id:
+                embed = self.embeds.NOT_IN_VOICE()
+                error = BadCommandUsage("You need to be in the voice channel to do loop messages")
+                return HandlerResponse(self.ctx, embed, error)
+        if  type(self.ctx) == VulkanContext:
+            if not self.ctx.author.voice or self.ctx.author.voice.channel.id != self.bot_member.voice.channel.id:
+                embed = self.embeds.NOT_IN_VOICE()
+                error = BadCommandUsage("You need to be in the voice channel to do loop messages")
+                return HandlerResponse(self.ctx, embed, error)    
+        
+        return None
+

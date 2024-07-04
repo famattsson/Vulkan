@@ -51,7 +51,7 @@ class MusicCog(Cog):
     async def play(self, ctx: Context, *args) -> None:
         try:
             controller = PlayHandler(ctx, self.__bot)
-
+            
             if len(args) > 1:
                 track = " ".join(args)
             else:

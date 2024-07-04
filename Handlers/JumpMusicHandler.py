@@ -17,6 +17,12 @@ class JumpMusicHandler(AbstractHandler):
         super().__init__(ctx, bot)
 
     async def run(self, musicPos: str) -> HandlerResponse:
+        match self.verifyThatUserIsInVoiceChannel() :
+            case response if type(response) == HandlerResponse:
+                return response
+            case response if type(response) == None:
+                print("user was in same channel") 
+                
         playersManager: AbstractPlayersManager = self.config.getPlayersManager()
         if not playersManager.verifyIfPlayerExists(self.guild):
             embed = self.embeds.NOT_PLAYING()

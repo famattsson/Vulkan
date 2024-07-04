@@ -14,6 +14,12 @@ class PrevHandler(AbstractHandler):
         super().__init__(ctx, bot)
 
     async def run(self) -> HandlerResponse:
+        match self.verifyThatUserIsInVoiceChannel() :
+            case response if type(response) == HandlerResponse:
+                return response
+            case response if type(response) == None:
+                print("user was in same channel") 
+                
         if not self.__user_connected():
             error = ImpossibleMove()
             embed = self.embeds.NO_CHANNEL()
