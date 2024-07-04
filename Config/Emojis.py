@@ -1,6 +1,5 @@
 from Config.Singleton import Singleton
 
-
 class VEmojis(Singleton):
     def __init__(self) -> None:
         if not super().created:
