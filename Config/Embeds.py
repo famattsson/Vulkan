@@ -360,6 +360,19 @@ class VEmbeds:
             description=self.__messages.PLAYER_NOT_PLAYING,
             colour=self.__colors.BLUE)
         return embed
+    def NOT_IN_VOICE(self) -> Embed:
+        embed = Embed(
+            title=self.__messages.SONG_PLAYER,
+            description=self.__messages.NOT_IN_VOICE_CHANNEL,
+            colour=self.__colors.RED)
+        return embed
+    
+    def BOT_NOT_IN_VOICE(self) -> Embed:
+        embed = Embed(
+            title=self.__messages.SONG_PLAYER,
+            description=self.__messages.BOT_NOT_IN_VOICE_CHANNEL,
+            colour=self.__colors.RED)
+        return embed
     
     def VOLUME_CHANGED(self, volume: float) -> Embed:
         embed = Embed(

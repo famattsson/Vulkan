@@ -13,12 +13,23 @@ class LoopHandler(AbstractHandler):
         super().__init__(ctx, bot)
 
     async def run(self, args: str) -> HandlerResponse:
+
         playersManager: AbstractPlayersManager = self.config.getPlayersManager()
         if not playersManager.verifyIfPlayerExists(self.guild):
             embed = self.embeds.NOT_PLAYING()
             error = BadCommandUsage()
             return HandlerResponse(self.ctx, embed, error)
+        
+        if not self.bot_member.voice:
+            embed = self.embeds.BOT_NOT_IN_VOICE()
+            error = BadCommandUsage("The bot needs to be in the voice channel to do loop messages")
+            return HandlerResponse(self.ctx, embed, error)
 
+        if not self.ctx.user.voice or self.ctx.user.voice.channel.id != self.bot_member.voice.channel.id:
+            embed = self.embeds.NOT_IN_VOICE()
+            error = BadCommandUsage("You need to be in the voice channel to do loop messages")
+            return HandlerResponse(self.ctx, embed, error)
+        
         playlist = playersManager.getPlayerPlaylist(self.guild)
         playerLock = playersManager.getPlayerLock(self.guild)
         acquired = playerLock.acquire(timeout=self.config.ACQUIRE_LOCK_TIMEOUT)

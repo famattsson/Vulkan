@@ -65,6 +65,8 @@ class Messages(Singleton):
             self.ERROR_MISSING_ARGUMENTS = f'{self.__emojis.ERROR} Missing arguments in this command. Type {configs.BOT_PREFIX}help "command" to see more info about this command'
             self.NOT_PREVIOUS = f'{self.__emojis.ERROR} There is none previous song to play'
             self.PLAYER_NOT_PLAYING = f'{self.__emojis.ERROR} No song playing. Use {configs.BOT_PREFIX}play to start the player'
+            self.NOT_IN_VOICE_CHANNEL = f'{self.__emojis.ERROR} You have to be in the voice channel to perform this command'
+            self.BOT_NOT_IN_VOICE_CHANNEL = f'{self.__emojis.ERROR} The bot has to be in a voice channel for you to perform this command'
             self.IMPOSSIBLE_MOVE = 'That is impossible :('
             self.ERROR_TITLE = 'Error :-('
             self.COMMAND_NOT_FOUND_TITLE = 'This is strange :-('
