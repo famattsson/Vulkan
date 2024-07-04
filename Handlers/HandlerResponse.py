@@ -4,7 +4,6 @@ from Config.Exceptions import VulkanError
 from discord import Embed, Interaction
 from UI.Views.AbstractView import AbstractView
 
-
 class HandlerResponse:
     def __init__(self, ctx: Union[Context, Interaction], embed: Embed = None, error: VulkanError = None, view=None) -> None:
         self.__ctx: Context = ctx
