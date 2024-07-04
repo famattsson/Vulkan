@@ -95,7 +95,8 @@ class AbstractHandler(ABC):
                 embed = self.embeds.NOT_IN_VOICE()
                 error = BadCommandUsage("You need to be in the voice channel to do loop messages")
                 return HandlerResponse(self.ctx, embed, error)
-        if  type(self.ctx) == VulkanContext:
+            
+        if type(self.ctx) == VulkanContext:
             if not self.ctx.author.voice or self.ctx.author.voice.channel.id != self.bot_member.voice.channel.id:
                 embed = self.embeds.NOT_IN_VOICE()
                 error = BadCommandUsage("You need to be in the voice channel to do loop messages")
