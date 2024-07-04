@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from Config.Singleton import Singleton
 from Config.Folder import Folder
 
-
 load_dotenv()
 
 class VConfigs(Singleton):
