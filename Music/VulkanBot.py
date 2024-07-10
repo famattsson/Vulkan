@@ -46,7 +46,7 @@ class VulkanBot(Bot):
     async def on_ready(self):
         if self.__listingSlash:
             print(self.__messages.STARTUP_MESSAGE)
-        await self.change_presence(status=Status.online, activity=Game(name=f"{self.__configs.BOT_PREFIX}help, cumbuster"))
+        await self.change_presence(status=Status.online, activity=Game(name=f"{self.__configs.BOT_PREFIX}help"))
         if self.__listingSlash:
             print(self.__messages.STARTUP_COMPLETE_MESSAGE)
 
